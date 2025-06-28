@@ -1,0 +1,39 @@
+name: Create Pull Request
+
+on:
+  workflow_call:
+    inputs:
+      title:
+        description: 'Title of PR'
+        required: false
+        default: 'Automated workflow PR'
+        type: string
+      body:
+        description: 'Body of PR'
+        required: false
+        default: 'Automated workflow created this PR, be sure to check changes'
+        type: string
+      flag:
+        description: 'Optional flags like --draft'
+        required: false
+        default: ''
+        type: string
+    secrets:
+      TOKEN:
+        description: 'GitHub token for creating Pull Request'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create (Draft) Pull Request to Stage
+        run: |
+          gh pr create \
+            --base stage \
+            --head develop \
+            --title "${{ inputs.title }}" \
+            --body "${{ inputs.body }}" \
+            ${{ inputs.flag }}
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
