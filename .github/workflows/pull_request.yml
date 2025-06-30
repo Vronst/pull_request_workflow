@@ -35,6 +35,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Create (Draft) Pull Request to Stage
         run: |
           gh pr create \
