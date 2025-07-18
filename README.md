@@ -30,7 +30,7 @@ jobs:
       base: 'base_branch'
       title: 'Thats PR title'
       body: 'And thats PR body'
-      extra_flags: '--draft'  # others can be used
+      flag: '--draft'  # multiple others can be used in one string
     secrets:
       TOKEN: ${{ secrets.PRO_TOKEN }}
 ```
