@@ -40,11 +40,12 @@ jobs:
         
       - name: Create (Draft) Pull Request to Stage
         run: |
-          gh pr create \
-            --base ${{ inputs.base }} \
-            --head ${{ inputs.head }} \
-            --title "${{ inputs.title }}" \
-            --body "${{ inputs.body }}" \
-            ${{ inputs.flag }}
+          CMD="gh pr create \
+            --base '${{ inputs.base }}' \
+            --head '${{ inputs.head }}' \
+            --title '${{ inputs.title }}' \
+            --body '${{ inputs.body }}' \
+            '${{ inputs.flag }}'"
+          eval "$CMD"
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
