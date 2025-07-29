@@ -49,7 +49,7 @@ jobs:
               --title '${{ inputs.title }}' \
               --body '${{ inputs.body }}'"
             if [[ -n "${{ inputs.flag }}" ]]; then
-              CMD+=('${{ inputs.flag }}'")
+              CMD+=('${{ inputs.flag }}')
             fi
             eval "$CMD"
           
