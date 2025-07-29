@@ -47,8 +47,10 @@ jobs:
               --base '${{ inputs.base }}' \
               --head '${{ inputs.head }}' \
               --title '${{ inputs.title }}' \
-              --body '${{ inputs.body }}' \
-              '${{ inputs.flag }}'"
+              --body '${{ inputs.body }}'"
+            if [[ -n "${{ inputs.flag }}" ]]; then
+              CMD+=('${{ inputs.flag }}'")
+            fi
             eval "$CMD"
           
           fi
